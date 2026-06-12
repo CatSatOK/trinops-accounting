@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trinops Accounting</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Trinops Accounting</h1>
+      <div class="subtitle">Accounts receivable + accounts payable automation</div>
+    </div>
+    <button id="report-btn" class="btn btn-ghost">Run monthly report</button>
+  </header>
+
+  <section id="cards">
+    <div class="card"><div class="card-label">AR outstanding</div><div class="card-value" id="card-outstanding">–</div></div>
+    <div class="card"><div class="card-label">Overdue invoices</div><div class="card-value warn" id="card-overdue">–</div></div>
+    <div class="card"><div class="card-label">AP spend (6 mo)</div><div class="card-value" id="card-spend">–</div></div>
+    <div class="card"><div class="card-label">Anomalies flagged</div><div class="card-value warn" id="card-anomalies">–</div></div>
+  </section>
+
+  <section id="charts">
+    <div class="chart-box">
+      <h2>Monthly spend by category</h2>
+      <canvas id="spend-chart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h2>AR by status</h2>
+      <canvas id="ar-chart"></canvas>
+    </div>
+  </section>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Invoices (AR)</h2>
+        <div class="filters" id="ar-filters">
+          <button class="filter active" data-status="">All</button>
+          <button class="filter" data-status="DRAFT">Draft</button>
+          <button class="filter" data-status="SENT">Sent</button>
+          <button class="filter" data-status="OVERDUE">Overdue</button>
+          <button class="filter" data-status="PAID">Paid</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Client</th><th>Description</th><th>Amount</th><th>Due</th><th>Status</th><th>Reminders</th><th></th></tr>
+        </thead>
+        <tbody id="invoice-rows"></tbody>
+      </table>
+      <div id="invoice-empty" class="empty-state hidden">No invoices match this filter.</div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Expenses (AP)</h2>
+        <div class="filters" id="ap-filters">
+          <button class="filter active" data-anomalies="">All</button>
+          <button class="filter" data-anomalies="true">Anomalies</button>
+        </div>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Vendor</th><th>Invoice no</th><th>Date</th><th>Amount</th><th>VAT</th><th>Category</th><th>Flags</th><th></th></tr>
+        </thead>
+        <tbody id="expense-rows"></tbody>
+      </table>
+      <div id="expense-empty" class="empty-state hidden">No expenses match this filter.</div>
+    </section>
+  </main>
+
+  <div id="toast" class="hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>

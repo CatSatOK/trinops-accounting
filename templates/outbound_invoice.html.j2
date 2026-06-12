@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font-family: Helvetica, Arial, sans-serif; color: #1e293b; margin: 40px; font-size: 13px; }
+  .top { display: flex; justify-content: space-between; margin-bottom: 36px; }
+  h1 { font-size: 26px; letter-spacing: 2px; color: #0d9488; margin: 0 0 6px; }
+  .meta { color: #64748b; }
+  .company { text-align: right; color: #475569; }
+  .company strong { color: #1e293b; font-size: 15px; }
+  .billto { margin-bottom: 28px; }
+  .billto .label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 24px; }
+  th { text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; border-bottom: 2px solid #0d9488; padding: 6px 8px; }
+  td { padding: 10px 8px; border-bottom: 1px solid #e2e8f0; }
+  .num { text-align: right; }
+  .totals { width: 280px; margin-left: auto; }
+  .totals td { border: none; padding: 4px 8px; }
+  .totals .grand td { border-top: 2px solid #0d9488; font-weight: bold; font-size: 15px; padding-top: 8px; }
+  .terms { margin-top: 36px; color: #64748b; font-size: 11px; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div>
+      <h1>INVOICE</h1>
+      <div class="meta">Invoice number: {{ invoice_number }}</div>
+      <div class="meta">Issue date: {{ issue_date }}</div>
+      <div class="meta">Due date: {{ due_date }}</div>
+    </div>
+    <div class="company">
+      <strong>{{ company_name }}</strong><br>
+      {{ company_address }}<br>
+      {{ company_email }}
+    </div>
+  </div>
+
+  <div class="billto">
+    <div class="label">Billed to</div>
+    <strong>{{ client_name }}</strong><br>
+    {{ client_email }}
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Description</th><th class="num">Amount</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{{ description }}</td><td class="num">£{{ net }}</td></tr>
+    </tbody>
+  </table>
+
+  <table class="totals">
+    <tr><td>Subtotal</td><td class="num">£{{ net }}</td></tr>
+    <tr><td>VAT ({{ vat_pct }}%)</td><td class="num">£{{ vat }}</td></tr>
+    <tr class="grand"><td>Total due</td><td class="num">£{{ total }}</td></tr>
+  </table>
+
+  <div class="terms">
+    Payment is due by {{ due_date }}. Please quote invoice number {{ invoice_number }} with your payment.<br>
+    Questions about this invoice? Contact {{ company_email }}.
+  </div>
+</body>
+</html>

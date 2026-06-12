@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family: Helvetica, Arial, sans-serif; color: #1e293b; font-size: 14px; line-height: 1.6;">
+  <p>Dear {{ client_name }},</p>
+  {% if final %}
+  <p>This is a <strong>final reminder</strong> that invoice <strong>{{ invoice_number }}</strong>
+  for <strong>£{{ total }}</strong> remains unpaid. It was due on {{ due_date }} and is now
+  <strong>{{ days_overdue }} days overdue</strong>.</p>
+  <p>Please arrange payment immediately, or contact us today if there is a problem with this
+  invoice. Unpaid invoices may be passed to collections.</p>
+  {% else %}
+  <p>This is a friendly reminder that invoice <strong>{{ invoice_number }}</strong>
+  for <strong>£{{ total }}</strong> was due on {{ due_date }} and is now
+  <strong>{{ days_overdue }} days overdue</strong>.</p>
+  <p>If you have already paid, please disregard this message. Otherwise, we would appreciate
+  payment at your earliest convenience. A copy of the invoice is attached.</p>
+  {% endif %}
+  <p>If you have any questions, contact {{ company_email }}.</p>
+  <p>Kind regards,<br>{{ company_name }}</p>
+</body>
+</html>

@@ -1,0 +1,116 @@
+[
+  {
+    "email_id": "seed-ap-001",
+    "sender": "billing@supplier-x.example.com",
+    "subject": "Invoice SUP-X-1042",
+    "invoice": {
+      "vendor": "Supplier X Cloud Services",
+      "invoice_number": "SUP-X-1042",
+      "days_ago": 12,
+      "lines": [
+        { "description": "Cloud hosting subscription - monthly", "amount": "96.00" },
+        { "description": "Backup storage licence", "amount": "24.00" }
+      ],
+      "subtotal": "120.00",
+      "vat": "24.00",
+      "total": "144.00"
+    }
+  },
+  {
+    "email_id": "seed-ap-002",
+    "sender": "accounts@supplier-y.example.com",
+    "subject": "Invoice TRV-2210",
+    "invoice": {
+      "vendor": "Supplier Y Travel",
+      "invoice_number": "TRV-2210",
+      "days_ago": 20,
+      "lines": [
+        { "description": "Fuel charges - site visits", "amount": "180.50" },
+        { "description": "Hotel - two nights, client site", "amount": "130.00" }
+      ],
+      "subtotal": "310.50",
+      "vat": "62.10",
+      "total": "372.60"
+    }
+  },
+  {
+    "email_id": "seed-ap-003",
+    "sender": "sales@supplier-z.example.com",
+    "subject": "Invoice MAT-0877",
+    "invoice": {
+      "vendor": "Supplier Z Materials",
+      "invoice_number": "MAT-0877",
+      "days_ago": 8,
+      "lines": [
+        { "description": "Timber and fixings - workshop order", "amount": "265.00" }
+      ],
+      "subtotal": "265.00",
+      "vat": null,
+      "total": "265.00"
+    }
+  },
+  {
+    "email_id": "seed-ap-004",
+    "sender": "billing@supplier-w.example.com",
+    "subject": "Invoice EQP-3301",
+    "invoice": {
+      "vendor": "Supplier W Office Equipment",
+      "invoice_number": "EQP-3301",
+      "days_ago": 18,
+      "lines": [
+        { "description": "Printer toner and hardware accessories", "amount": "260.00" }
+      ],
+      "subtotal": "260.00",
+      "vat": "52.00",
+      "total": "312.00"
+    }
+  },
+  {
+    "email_id": "seed-ap-005",
+    "sender": "billing@supplier-w.example.com",
+    "subject": "Invoice EQP-3308",
+    "invoice": {
+      "vendor": "Supplier W Office Equipment",
+      "invoice_number": "EQP-3308",
+      "days_ago": 5,
+      "lines": [
+        { "description": "Printer toner and hardware accessories", "amount": "260.00" }
+      ],
+      "subtotal": "260.00",
+      "vat": "52.00",
+      "total": "312.00"
+    }
+  },
+  {
+    "email_id": "seed-ap-006",
+    "sender": "invoices@supplier-v.example.com",
+    "subject": "Invoice CON-5512",
+    "invoice": {
+      "vendor": "Supplier V Consulting",
+      "invoice_number": "CON-5512",
+      "days_ago": 15,
+      "lines": [
+        { "description": "Process consulting - two day engagement", "amount": "480.00" }
+      ],
+      "subtotal": "480.00",
+      "vat": "60.00",
+      "total": "540.00"
+    }
+  },
+  {
+    "email_id": "seed-ap-007",
+    "sender": "billing@supplier-u.example.com",
+    "subject": "Invoice UTL-9904",
+    "invoice": {
+      "vendor": "Supplier U Utilities",
+      "invoice_number": "UTL-9904",
+      "days_ago": -21,
+      "lines": [
+        { "description": "Electricity supply - workshop unit", "amount": "95.40" }
+      ],
+      "subtotal": "95.40",
+      "vat": "19.08",
+      "total": "114.48"
+    }
+  }
+]

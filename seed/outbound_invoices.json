@@ -1,0 +1,50 @@
+[
+  {
+    "client_name": "Client X",
+    "client_email": "client.x@example.com",
+    "description": "Transport scheduling optimisation - phase 1",
+    "amount": 1450.0,
+    "issued_days_ago": 2,
+    "status": "DRAFT"
+  },
+  {
+    "client_name": "Client Y",
+    "client_email": "client.y@example.com",
+    "description": "Monthly automation retainer - current month",
+    "amount": 850.0,
+    "issued_days_ago": 6,
+    "status": "SENT"
+  },
+  {
+    "client_name": "Client Z",
+    "client_email": "client.z@example.com",
+    "description": "Workflow audit and recommendations report",
+    "amount": 620.0,
+    "issued_days_ago": 25,
+    "status": "SENT"
+  },
+  {
+    "client_name": "Company B",
+    "client_email": "accounts@company-b.example.com",
+    "description": "Custom booking system - milestone 2",
+    "amount": 2200.0,
+    "issued_days_ago": 50,
+    "status": "SENT"
+  },
+  {
+    "client_name": "Client X",
+    "client_email": "client.x@example.com",
+    "description": "Initial consultation and scoping",
+    "amount": 300.0,
+    "issued_days_ago": 40,
+    "status": "PAID"
+  },
+  {
+    "client_name": "Client Y",
+    "client_email": "client.y@example.com",
+    "description": "Monthly automation retainer - previous month",
+    "amount": 850.0,
+    "issued_days_ago": 36,
+    "status": "PAID"
+  }
+]
