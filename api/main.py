@@ -14,7 +14,7 @@ from api.routes.expenses import router as expenses_router
 from api.routes.invoices import router as invoices_router
 from api.routes.reports import router as reports_router
 from api.auth import require_admin
-from api.security import SecurityHeadersMiddleware
+from api.security import SecurityHeadersMiddleware, docs_urls
 
 # Strict policy. script-src allows the jsdelivr CDN because the dashboard pulls
 # Chart.js from there; everything else stays same-origin and un-framed.
@@ -36,7 +36,13 @@ async def lifespan(app: FastAPI):
     stop_scheduler()
 
 
-app = FastAPI(title="Trinops Accounting", lifespan=lifespan)
+# Interactive docs only in demo mode (see docs_urls). FastAPI never leaks
+# tracebacks unless debug=True, which is never set, so production 500s stay generic.
+app = FastAPI(
+    title="Trinops Accounting",
+    lifespan=lifespan,
+    **docs_urls(get_settings().demo_mode),
+)
 app.add_middleware(SecurityHeadersMiddleware, csp=CSP)
 
 
