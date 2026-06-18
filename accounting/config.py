@@ -15,6 +15,9 @@ class Settings(BaseSettings):
 
     demo_mode: bool = True
 
+    # Protects staff/admin endpoints when demo_mode is false (sent as X-API-Key).
+    admin_api_key: str = ""
+
     database_url: str = "sqlite:///./data/accounting.db"
 
     # AP inbox poll + AR reminder check intervals

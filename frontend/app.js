@@ -12,6 +12,18 @@ let arChart = null;
 
 const fmt = (n) => "£" + Number(n).toLocaleString("en-GB", { minimumFractionDigits: 2 });
 
+// Escape values that originate from invoices / parsed supplier PDFs before they
+// go into innerHTML, so a crafted vendor or client name can't inject markup.
+function esc(value) {
+  if (value === null || value === undefined) return "";
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
 async function api(path, options = {}) {
   const res = await fetch(path, options);
   if (!res.ok) {
@@ -41,8 +53,8 @@ async function loadInvoices() {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>INV-${String(inv.id).padStart(5, "0")}</td>
-      <td>${inv.client_name}</td>
-      <td class="muted">${inv.description}</td>
+      <td>${esc(inv.client_name)}</td>
+      <td class="muted">${esc(inv.description)}</td>
       <td>${fmt(inv.amount)}</td>
       <td>${inv.due_date}</td>
       <td><span class="badge badge-${inv.status}">${inv.status}</span></td>
@@ -100,13 +112,13 @@ async function loadExpenses() {
     const tr = document.createElement("tr");
     if (exp.anomaly_flag) tr.classList.add("flagged");
     tr.innerHTML = `
-      <td>${exp.vendor || "<span class='muted'>unknown</span>"}</td>
-      <td class="muted">${exp.invoice_number || "–"}</td>
+      <td>${exp.vendor ? esc(exp.vendor) : "<span class='muted'>unknown</span>"}</td>
+      <td class="muted">${exp.invoice_number ? esc(exp.invoice_number) : "–"}</td>
       <td>${exp.invoice_date || "–"}</td>
       <td>${exp.amount != null ? fmt(exp.amount) : "–"}</td>
       <td class="muted">${exp.vat_amount != null ? fmt(exp.vat_amount) : "–"}</td>
       <td class="category-cell"></td>
-      <td class="flag-cell">${exp.anomaly_flag ? `<span class="flag">${exp.anomaly_flag}</span>` : ""}</td>
+      <td class="flag-cell">${exp.anomaly_flag ? `<span class="flag">${esc(exp.anomaly_flag)}</span>` : ""}</td>
       <td class="actions"></td>`;
 
     const select = document.createElement("select");
